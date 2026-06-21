@@ -1,0 +1,108 @@
+#include <iostream>
+using namespace std;
+
+// structure
+struct Student
+{
+    string id;
+    string name;
+    int age;
+    string course;
+};
+
+int main()
+{
+    
+    // array that will store 5 student records
+    const int SIZE = 5;
+    Student student[SIZE];
+    
+    // for users to input 5 student records
+    cout << "Enter details for the 5 students:\n";
+    
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+        
+        cout << "ID: ";
+        cin >> student[i].id;
+        
+        cin.ignore();
+        
+        cout << "Name: ";
+        getline(cin, student[i].name);
+        
+        cout << "Age: ";
+        cin >> student[i].age;
+        
+        cin.ignore();
+        
+        cout << "Coure: ";
+        getline(cin, student[i].course);
+        
+    }
+    
+    //to display all the records
+    
+    cout << "\n======= STUDENT RECORDS =======\n";
+    
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << "\nStudent " << i + 1 << endl;
+        cout << "ID: " << student[i].id << endl;
+        cout << "Name: " << student[i].name << endl;
+        cout << "Age: " << student[i].age << endl;
+        cout << "Course: " << student[i].course << endl;
+    }
+    
+    // searching students by their student id
+    string searchid;
+    bool found = false;
+    
+    cout << "\bSearcg student by ID: ";
+    cin >> searchid;
+    
+    for (int i = 0; i < SIZE; i++)
+    {
+        if (student[i].id == searchid)
+        {
+            cout << "\n STUDENT FOUND \n";
+            cout << "ID: " << student[i].id << endl;
+            cout << "Name: " << student[i].name << endl;
+            cout << "Age: " << student[i].age << endl;
+            cout << "Course: " << student[i].course << endl;
+            
+            //updating student records
+            cout << "\nUpdate this record\n";
+            
+            cin.ignore();
+            
+            cout << "New Name: ";
+            getline(cin, student[i].name);
+            
+            cout << "New Age: ";
+            getline(cin, student[i].course);
+            
+            cout << "New Course: ";
+            getline(cin, student[i].course);
+            
+            cout << "\n STUDENT RECORD HAS BEEN UPDATED \n";
+            
+            //to display updated RECORD
+            cout << "\nUpdated Student\n";
+            cout << "ID: " << student[i].id << endl;
+            cout << "Name: " << student[i].name << endl;
+            cout << "Age: " << student[i].age << endl;
+            cout << "Course: " << student[i].course << endl;
+            
+            break;
+        }
+    }
+    
+    if(!found)
+    {
+        cout << "\nStudemt ID not found.\n";
+    }
+    
+    return 0;
+}
